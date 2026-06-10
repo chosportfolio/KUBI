@@ -11,17 +11,31 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" replace />} />
+      <Route
+        path="/"
+        element={
+          <Home
+            isLoggedIn={isLoggedIn}
+            onLogout={handleLogout}
+          />
+        }
+      />
+
       <Route
         path="/home"
         element={
-          <Home isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+          <Navigate to="/" replace />
         }
       />
+
       <Route
         path="/login"
         element={
-          isLoggedIn ? <Navigate to="/home" replace /> : <Login onLogin={handleLogin} />
+          isLoggedIn ? (
+            <Navigate to="/" replace />
+          ) : (
+            <Login onLogin={handleLogin} />
+          )
         }
       />
     </Routes>
