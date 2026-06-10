@@ -22,13 +22,6 @@ function App() {
       />
 
       <Route
-        path="/home"
-        element={
-          <Navigate to="/" replace />
-        }
-      />
-
-      <Route
         path="/login"
         element={
           isLoggedIn ? (
@@ -38,6 +31,8 @@ function App() {
           )
         }
       />
+
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
