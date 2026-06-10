@@ -1,19 +1,30 @@
 import logo from '../../assets/ku_logo.png'
 
-export default function Header() {
+type HeaderProps = {
+  onMenuClick: () => void;
+};
+
+export default function Header({ onMenuClick }: HeaderProps) {
   return (
     <header>
-        <ul className='header relative h-full flex'>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
-            </li>
-            <li>
-                <img className='logo' src={logo} alt='건국대학교' /> 쿠비(KUBI)
-            </li>
-            <li>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
-            </li>
-        </ul>
+      <ul className='header relative h-full flex items-center'>
+        <li>
+          <button
+            type='button'
+            onClick={onMenuClick}
+            className='p-2 text-white hover:text-gray-200'
+            aria-label='open menu'
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+          </button>
+        </li>
+        <li className='flex-1 flex items-center gap-2'>
+          <img className='logo' src={logo} alt='건국대학교' /> 쿠비(KUBI)
+        </li>
+        <li>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
+        </li>
+      </ul>
     </header>
   )
 }

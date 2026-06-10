@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Header from "../components/Sidebar/Header";
+import Sidebar from "../components/Sidebar/Sidebar";
 import ChatContainer from "../components/Chat/ChatContainer";
 import ChatInput from "../components/Chat/ChatInput";
 
@@ -8,7 +9,12 @@ import type { Menu, Message } from "../types/Chat";
 import { menuData } from "../data/menuData";
 import { getCurrentTime, getRandomDelay } from "../utils/chatUtils";
 
-function Home() {
+type HomeProps = {
+  isLoggedIn: boolean;
+  onLogout: () => void;
+};
+
+function Home({ isLoggedIn, onLogout }: HomeProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       type: "menu",
@@ -57,6 +63,8 @@ function Home() {
     };
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   const sendMessage = (text: string) => {
     if (!text.trim()) return;
 
@@ -102,8 +110,19 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <Header />
+    <div className="relative flex flex-col h-screen">
+      <Header onMenuClick={() => setSidebarOpen(true)} />
+
+      {sidebarOpen && (
+        <Sidebar
+          isLoggedIn={isLoggedIn}
+          onClose={() => setSidebarOpen(false)}
+          onLogout={() => {
+            onLogout();
+            setSidebarOpen(false);
+          }}
+        />
+      )}
 
       <ChatContainer
         messages={messages}

@@ -2,7 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/konkuk.png";
 
-export default function Login() {
+type LoginProps = {
+  onLogin: () => void;
+};
+
+export default function Login({ onLogin }: LoginProps) {
   const navigate = useNavigate();
 
   const USERS = [
@@ -25,6 +29,7 @@ export default function Login() {
     );
 
     if (user) {
+      onLogin();
       navigate("/home");
     } else {
       alert("아이디 또는 비밀번호가 일치하지 않습니다.");

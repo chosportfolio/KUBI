@@ -450,3 +450,64 @@ header {
     .message-bubble {
         font-size: 15px;
     }}
+
+.sidebar-overlay {
+    position: fixed;
+    right: 0px;
+    height: 100vh;
+    z-index: 99;
+    display: flex;
+}
+
+.sidebar-backdrop {
+    position: absolute;
+    inset: 0;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}
+
+.sidebar-panel {
+    position: relative;
+    z-index: 10;
+    width: 280px;
+    max-width: 100%;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.sidebar-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.sidebar-close {
+    border: none;
+    background: transparent;
+    color: #444;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.sidebar-action-button {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    background-color: #0b8f3a;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sidebar-action-button:hover {
+    background-color: #006330;
+}
