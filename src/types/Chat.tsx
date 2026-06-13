@@ -1,10 +1,14 @@
+export type Button = {
+  text: string;
+  url: string;
+};
+
 export type Message = {
   type: "text" | "menu" | "link";
   text: string;
 
   description?: string;
-  buttonText?: string;
-  url?: string;
+  buttons?: Button[];
 
   isUser: boolean;
   time: string;
@@ -25,6 +29,9 @@ export type Menu = {
   botText: string;
 
   description?: string;
-  buttonText?: string;
-  url?: string;
+
+  buttons?: {
+    text: string;
+    url: string;
+  }[];
 };

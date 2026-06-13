@@ -5,8 +5,7 @@ export default function MessageBubble({
   type,
   text,
   description,
-  buttonText,
-  url,
+  buttons,
   isUser,
   time,
   isLoading,
@@ -14,11 +13,7 @@ export default function MessageBubble({
   return (
     <div className={isUser ? "message-row user-row" : "message-row bot-row"}>
       {!isUser && (
-        <img
-          src={kuCharacter}
-          alt="쿠비 프로필"
-          className="profile"
-        />
+        <img src={kuCharacter} alt="쿠비 프로필" className="profile" />
       )}
 
       <div className={isUser ? "message-content user-content" : "message-content bot-content"}>
@@ -39,15 +34,20 @@ export default function MessageBubble({
                 </p>
               )}
 
-              {type === "link" && buttonText && url && (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-button"
-                >
-                  {buttonText}
-                </a>
+              {type === "link" && buttons && buttons.length > 0 && (
+                <div className="link-button-group">
+                  {buttons.map((button, index) => (
+                    <a
+                      key={index}
+                      href={button.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-button"
+                    >
+                      {button.text}
+                    </a>
+                  ))}
+                </div>
               )}
             </>
           )}

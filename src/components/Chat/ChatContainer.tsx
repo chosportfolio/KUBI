@@ -12,10 +12,7 @@ type Props = {
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
 };
 
-export default function ChatContainer({
-  messages,
-  setMessages,
-}: Props) {
+export default function ChatContainer({ messages, setMessages }: Props) {
   const [currentPage, setCurrentPage] = useState(0);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
@@ -43,32 +40,24 @@ export default function ChatContainer({
       isLoading: true,
     };
 
-    setMessages((prev) => [
-      ...prev,
-      userMessage,
-      loadingMessage,
-    ]);
+    setMessages((prev) => [...prev, userMessage, loadingMessage]);
 
     setTimeout(() => {
       setMessages((prev) => {
         const messagesWithoutLoading = prev.filter(
-          (message) => !message.isLoading
+          (message) => !message.isLoading,
         );
 
         const botMessage: Message = {
           type: "link",
           text: menu.botText,
           description: menu.description,
-          buttonText: menu.buttonText,
-          url: menu.url,
+          buttons: menu.buttons,
           isUser: false,
           time: getCurrentTime(),
         };
 
-        return [
-          ...messagesWithoutLoading,
-          botMessage,
-        ];
+        return [...messagesWithoutLoading, botMessage];
       });
     }, getRandomDelay());
   };
@@ -92,7 +81,9 @@ export default function ChatContainer({
                     <button
                       key={index}
                       type="button"
-                      className={currentPage === index ? "dot active-dot" : "dot"}
+                      className={
+                        currentPage === index ? "dot active-dot" : "dot"
+                      }
                       onClick={() => setCurrentPage(index)}
                     />
                   ))}
