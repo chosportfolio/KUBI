@@ -141,7 +141,7 @@ export const menuData: Menu[] = [
           en: "Scholarship Guide",
           zh: "奖学金指南",
         },
-        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=650",
+        url: "https://scholarship.kku.ac.kr/index.do#a",
       },
       {
         text: {
@@ -149,7 +149,7 @@ export const menuData: Menu[] = [
           en: "Scholarship Notices",
           zh: "奖学金公告",
         },
-        url: "https://www.kku.ac.kr/user/boardList.do?command=view&page=1&boardId=1481",
+        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=1750#page1",
       },
       {
         text: {
@@ -157,7 +157,7 @@ export const menuData: Menu[] = [
           en: "National Scholarship",
           zh: "国家奖学金",
         },
-        url: "https://www.kosaf.go.kr",
+        url: "https://scholarship.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=50",
       },
     ],
   },
@@ -463,22 +463,32 @@ export const menuData: Menu[] = [
       "증명서",
       "증명서 발급",
       "재학증명서",
+      "휴학증명서",
       "성적증명서",
       "졸업증명서",
-      "발급",
-      "제증명",
+      "수료증명서",
+      "등록금 납부확인서",
+      "교육비 납입증명서",
+      "장학금 수혜증명서",
+      "인터넷 발급",
+      "우편 발급",
+      "팩스민원",
+      "자동발급기",
+
       "certificate",
       "certificates",
+      "certificate issuance",
       "enrollment certificate",
       "transcript",
       "graduation certificate",
-      "issue certificate",
+      "tuition payment certificate",
+
       "证明书",
+      "证明书办理",
       "在学证明",
       "成绩证明",
       "毕业证明",
-      "办理证明",
-      "证明材料",
+      "学费缴纳确认书",
     ],
 
     userText: {
@@ -488,51 +498,62 @@ export const menuData: Menu[] = [
     },
 
     botText: {
-      ko: "증명서 발급을 안내해드릴게요!😄",
-      en: "Here is how to issue certificates!😄",
-      zh: "下面为你介绍证明书办理方法！😄",
+      ko: "증명서 발급 방법을 안내해드릴게요!📄",
+      en: "Here is how to issue certificates!📄",
+      zh: "下面为你介绍证明书办理方法！📄",
     },
 
     description: {
       ko:
-        "증명서는 아래 방법으로 발급할 수 있어요.\n\n" +
-        "• 인터넷 발급\n" +
-        "• 우편 발급\n" +
-        "• 팩스민원 발급\n" +
-        "• 카카오톡 전자증명서 발급\n" +
-        "• 교내 자동발급기 발급\n" +
-        "• 교외 창구 발급\n\n" +
-        "자세한 발급 절차와 유의사항은 아래 버튼에서 확인하세요👇",
+        "재학증명서, 성적증명서, 졸업증명서, 수료증명서 등 각종 증명서는 온라인, 우편, 팩스민원, 카카오톡 전자증명서, 교내 자동발급기, 학사지원팀 방문 등을 통해 발급할 수 있습니다.\n\n" +
+        "증명서 종류마다 발급 가능 시점이나 조건이 다를 수 있으니, 자세한 내용은 아래 공식 안내 페이지에서 확인해주세요.\n\n" +
+        "📌 교내 자동발급기\n" +
+        "• 위치: 행정관(U1) 1층\n" +
+        "• 이용시간: 09:00~17:30\n" +
+        "• 월~금 운영, 공휴일 제외\n\n" +
+        "📞 문의\n" +
+        "• 학사지원팀: 043-840-3256\n" +
+        "• 이메일: academy@kku.ac.kr",
 
       en:
-        "Certificates can be issued through several methods.\n\n" +
-        "• Online issuance\n" +
-        "• Postal issuance\n" +
-        "• Fax civil service issuance\n" +
-        "• KakaoTalk electronic certificate issuance\n" +
-        "• On-campus automatic certificate machine\n" +
-        "• Off-campus service counter\n\n" +
-        "Please check the link below for detailed procedures and notes👇",
+        "Certificates such as enrollment certificates, transcripts, graduation certificates, and completion certificates can be issued online, by mail, through fax civil service, KakaoTalk electronic certificates, on-campus certificate machines, or by visiting the Academic Support Team.\n\n" +
+        "The availability and conditions may differ depending on the certificate type, so please check the official guide page below.\n\n" +
+        "📌 On-campus Certificate Machine\n" +
+        "• Location: Administration Hall U1, 1st floor\n" +
+        "• Hours: 09:00~17:30\n" +
+        "• Monday to Friday, excluding public holidays\n\n" +
+        "📞 Inquiries\n" +
+        "• Academic Support Team: 043-840-3256\n" +
+        "• Email: academy@kku.ac.kr",
 
       zh:
-        "证明书可以通过以下方式办理。\n\n" +
-        "• 网上办理\n" +
-        "• 邮寄办理\n" +
-        "• 传真民愿办理\n" +
-        "• KakaoTalk电子证明书办理\n" +
-        "• 校内自动证明书机器办理\n" +
-        "• 校外窗口办理\n\n" +
-        "详细流程和注意事项请通过下面的按钮确认👇",
+        "在学证明书、成绩证明书、毕业证明书、结业证明书等各类证明书，可通过网上办理、邮寄、传真民愿、KakaoTalk电子证明书、校内自动证明书机器或访问学事支援组办理。\n\n" +
+        "不同证明书的办理时间和条件可能不同，请通过下面的官方 안내 页面确认详细信息。\n\n" +
+        "📌 校内自动证明书机器\n" +
+        "• 位置：行政馆 U1 1楼\n" +
+        "• 时间：09:00~17:30\n" +
+        "• 周一至周五运营，公休日除外\n\n" +
+        "📞 咨询\n" +
+        "• 学事支援组：043-840-3256\n" +
+        "• 邮箱：academy@kku.ac.kr",
     },
 
     buttons: [
       {
         text: {
-          ko: "증명서 발급",
-          en: "Certificate Issuance",
-          zh: "证明书办理",
+          ko: "증명서 발급 안내",
+          en: "Certificate Issuance Guide",
+          zh: "证明书办理指南",
         },
-        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=650&CONTENTS_NO=3&P_TAB_NO=3#a",
+        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=650&CONTENTS_NO=3&P_TAB_NO=3",
+      },
+      {
+        text: {
+          ko: "학사정보시스템 바로가기",
+          en: "Go to Academic Info System",
+          zh: "进入学事信息系统",
+        },
+        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=1390",
       },
     ],
   },
