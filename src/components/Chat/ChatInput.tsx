@@ -1,10 +1,18 @@
 import { useState } from "react";
+import type { Language } from "../../types/Chat";
 
 type Props = {
   sendMessage: (text: string) => void;
+  language: Language;
 };
 
-export default function ChatInput({ sendMessage }: Props) {
+const placeholderText = {
+  ko: "질문을 입력하세요.",
+  en: "Type your question.",
+  zh: "请输入问题。",
+};
+
+export default function ChatInput({ sendMessage, language }: Props) {
   const [input, setInput] = useState("");
 
   const handleSend = () => {
@@ -33,7 +41,7 @@ export default function ChatInput({ sendMessage }: Props) {
       <li>
         <input
           type="text"
-          placeholder="질문을 입력하세요."
+          placeholder={placeholderText[language]}
           value={input}
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={(event) => {
@@ -45,10 +53,7 @@ export default function ChatInput({ sendMessage }: Props) {
       </li>
 
       <li>
-        <button
-          type="button"
-          onClick={handleSend}
-        >
+        <button type="button" onClick={handleSend}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"

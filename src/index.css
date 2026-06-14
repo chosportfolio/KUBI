@@ -2,17 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: 'nanumsquare';
-    src: url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
-}
+@import url('https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css');
+
 * {
     margin: 0;
     padding: 0;
     list-style: none;
     box-sizing: border-box;
     text-decoration: none;
-    font-family: 'nanumsquare';
+    font-family: 'NanumSquare', sans-serif;
 }
 body {
     min-width: 340px;
@@ -24,51 +22,110 @@ body {
 header {
     height: 60px;
     background-color: #004e26;
-    border-bottom: #d8d8d8 solid 1px;
+    border-bottom: 1px solid #d8d8d8;
 }
-.header ul {
+
+/* ul 자체가 header 클래스임 */
+.header {
     position: relative;
-    height: 100%;
+    width: 100%;
+    height: 60px;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.header .logo {
-    width: 35px;
-    vertical-align: middle;
-}
+
+/* 공통 li */
 .header li {
-    position: relative;
-    text-align: center;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
 }
-.header svg {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-}
+
+/* 왼쪽 언어 선택 */
 .header li:first-child {
-    margin-left: 10px;
-    width: 5%;
-    min-width: 60px;
+    width: 70px;
+    min-width: 70px;
+}
+
+/* 언어 선택 form */
+.header form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* select */
+.header select {
+    width: 52px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+    background-color: transparent;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
     cursor: pointer;
+    outline: none;
 }
+
+/* select 펼쳤을 때 옵션 글자 */
+.header select option {
+    color: #000;
+}
+
+/* 가운데 로고/타이틀 */
 .header li:nth-child(2) {
-    width: 90%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     font-size: 20px;
-    font-weight: 400;
-    line-height: 55px;
-    vertical-align: bottom;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
 }
-.header li:nth-child(2) img {
+
+/* 로고 */
+.header .logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
     border-radius: 50%;
     background-color: #fff;
 }
+
+/* 오른쪽 햄버거 */
 .header li:last-child {
-    margin-right: 10px;
-    width: 5%;
-    min-width: 60px;
-    cursor: pointer;
+    width: 70px;
+    min-width: 70px;
 }
+
+/* 햄버거 버튼 */
+.header button {
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 햄버거 아이콘 */
+.header svg {
+    width: 28px;
+    height: 28px;
+}
+
 /* =========================
    ChatContainer.tsx
 ========================= */
@@ -177,10 +234,16 @@ header {
     text-align: left;
 }
 /* 링크 버튼 */
+.link-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+}
+
 .link-button {
     display: inline-block;
     width: 100%;
-    margin-top: 16px;
     padding: 10px;
     border-radius: 8px;
     background-color: #fff;
@@ -188,6 +251,7 @@ header {
     text-align: center;
     transition: 0.2s;
 }
+
 .link-button:hover {
     color: #004e26;
     font-weight: 700;
@@ -346,23 +410,6 @@ header {
         transform: translateY(0);
     }
 }
-
-@keyframes typing {
-    0% {
-        opacity: 0.3;
-        transform: translateY(0);
-    }
-
-    50% {
-        opacity: 1;
-        transform: translateY(-4px);
-    }
-
-    100% {
-        opacity: 0.3;
-        transform: translateY(0);
-    }
-}
 .login-container {
     position: absolute;
     top: 50%;
@@ -420,6 +467,32 @@ header {
 ========================= */
 
 @media (max-width: 700px) {
+    .header li:first-child,
+    .header li:last-child {
+        width: 60px;
+        min-width: 60px;
+    }
+
+    .header li:nth-child(2) {
+        font-size: 17px;
+        gap: 6px;
+    }
+
+    .header .logo {
+        width: 32px;
+        height: 32px;
+    }
+
+    .header select {
+        width: 48px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .header svg {
+        width: 26px;
+        height: 26px;
+    }
     .chat-container {
         padding: 15px;
     }
@@ -453,10 +526,10 @@ header {
 
 .sidebar-overlay {
     position: fixed;
-    right: 0px;
-    height: 100vh;
+    inset: 0;
     z-index: 99;
     display: flex;
+    justify-content: flex-end;
 }
 
 .sidebar-backdrop {
@@ -471,6 +544,7 @@ header {
     position: relative;
     z-index: 10;
     width: 280px;
+    height: 100vh;
     max-width: 100%;
     background-color: #ffffff;
     padding: 20px;

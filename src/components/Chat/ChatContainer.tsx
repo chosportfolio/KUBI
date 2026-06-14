@@ -3,18 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import MessageBubble from "./MessageBubble";
 import MenuGrid from "./MenuGrid";
 
-import type { Menu, Message } from "../../types/Chat";
+import type { Language, Menu, Message } from "../../types/Chat";
 import { getMenuPages } from "../../data/menuData";
 import { getCurrentTime, getRandomDelay } from "../../utils/chatUtils";
 
 type Props = {
   messages: Message[];
   setMessages: React.Dispatch<React.SetStateAction<Message[]>>;
+  language: Language;
 };
 
 export default function ChatContainer({
   messages,
   setMessages,
+  language,
 }: Props) {
   const [currentPage, setCurrentPage] = useState(0);
   const bottomRef = useRef<HTMLDivElement | null>(null);
@@ -30,7 +32,7 @@ export default function ChatContainer({
   const handleMenuClick = (menu: Menu) => {
     const userMessage: Message = {
       type: "text",
-      text: menu.userText,
+      text: menu.userText[language],
       isUser: true,
       time: getCurrentTime(),
     };
@@ -57,10 +59,12 @@ export default function ChatContainer({
 
         const botMessage: Message = {
           type: "link",
-          text: menu.botText,
-          description: menu.description,
-          buttonText: menu.buttonText,
-          url: menu.url,
+          text: menu.botText[language],
+          description: menu.description?.[language],
+          buttons: menu.buttons?.map((button) => ({
+            text: button.text[language],
+            url: button.url,
+          })),
           isUser: false,
           time: getCurrentTime(),
         };
@@ -84,6 +88,7 @@ export default function ChatContainer({
               <>
                 <MenuGrid
                   menus={menuPages[currentPage] ?? []}
+                  language={language}
                   onMenuClick={handleMenuClick}
                 />
 
@@ -92,7 +97,9 @@ export default function ChatContainer({
                     <button
                       key={index}
                       type="button"
-                      className={currentPage === index ? "dot active-dot" : "dot"}
+                      className={
+                        currentPage === index ? "dot active-dot" : "dot"
+                      }
                       onClick={() => setCurrentPage(index)}
                     />
                   ))}

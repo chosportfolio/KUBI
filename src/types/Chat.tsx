@@ -1,30 +1,45 @@
-export type Message = {
-  type: "text" | "menu" | "link";
-  text: string;
+export type Language = "ko" | "en" | "zh";
 
-  description?: string;
-  buttonText?: string;
-  url?: string;
+export type LocalizedText = {
+  ko: string;
+  en: string;
+  zh: string;
+};
 
-  isUser: boolean;
-  time: string;
-
-  isLoading?: boolean;
+export type LinkButton = {
+  text: LocalizedText;
+  url: string;
 };
 
 export type Menu = {
-  title: string;
+  title: LocalizedText;
   icon: string;
 
   showInMenu: boolean;
-  page?: number;
+  page: number;
 
+  // 한국어, 영어, 중국어 키워드를 전부 여기에 넣음
   keywords: string[];
 
-  userText: string;
-  botText: string;
+  userText: LocalizedText;
+  botText: LocalizedText;
+  description?: LocalizedText;
 
+  buttons?: LinkButton[];
+};
+
+export type MessageButton = {
+  text: string;
+  url: string;
+};
+
+export type Message = {
+  type: "text" | "link" | "menu";
+  text: string;
   description?: string;
-  buttonText?: string;
-  url?: string;
+  buttons?: MessageButton[];
+
+  isUser: boolean;
+  time: string;
+  isLoading?: boolean;
 };

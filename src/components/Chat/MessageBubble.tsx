@@ -5,8 +5,7 @@ export default function MessageBubble({
   type,
   text,
   description,
-  buttonText,
-  url,
+  buttons,
   isUser,
   time,
   isLoading,
@@ -21,8 +20,20 @@ export default function MessageBubble({
         />
       )}
 
-      <div className={isUser ? "message-content user-content" : "message-content bot-content"}>
-        <div className={isUser ? "message-bubble user-bubble" : "message-bubble bot-bubble"}>
+      <div
+        className={
+          isUser
+            ? "message-content user-content"
+            : "message-content bot-content"
+        }
+      >
+        <div
+          className={
+            isUser
+              ? "message-bubble user-bubble"
+              : "message-bubble bot-bubble"
+          }
+        >
           {isLoading ? (
             <div className="typing-loader">
               <span></span>
@@ -39,15 +50,20 @@ export default function MessageBubble({
                 </p>
               )}
 
-              {type === "link" && buttonText && url && (
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-button"
-                >
-                  {buttonText}
-                </a>
+              {type === "link" && buttons && buttons.length > 0 && (
+                <div className="link-buttons">
+                  {buttons.map((button) => (
+                    <a
+                      key={button.text}
+                      href={button.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-button"
+                    >
+                      {button.text}
+                    </a>
+                  ))}
+                </div>
               )}
             </>
           )}
