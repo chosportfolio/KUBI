@@ -545,7 +545,7 @@ export const menuData: Menu[] = [
           en: "Certificate Issuance Guide",
           zh: "证明书办理指南",
         },
-        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=650&CONTENTS_NO=3&P_TAB_NO=3",
+        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=1390",
       },
       {
         text: {
@@ -553,7 +553,7 @@ export const menuData: Menu[] = [
           en: "Go to Academic Info System",
           zh: "进入学事信息系统",
         },
-        url: "https://www.kku.ac.kr/cms/FR_CON/index.do?MENU_ID=1390",
+        url: "https://kis.kku.ac.kr/index.do",
       },
     ],
   },
